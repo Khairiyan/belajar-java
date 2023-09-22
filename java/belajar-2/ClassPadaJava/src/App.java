@@ -17,7 +17,7 @@ class App {
         // System.out.println(getAge(mahasiswaKhairiyan));
         int kumpulanUmurMahasiswa[] = new int[mahasiswaKhairiyanArray.length];
         for (int i = 0; i < mahasiswaKhairiyanArray.length; i++) {
-            kumpulanUmurMahasiswa[i] = ambilUmur(mahasiswaKhairiyanArray[i]);
+            kumpulanUmurMahasiswa[i] = getAgeInt(mahasiswaKhairiyanArray[i]);
         }
 
         int arrayAngka[] = { 23, 5, 6, 12, 78, 9, 19 };
@@ -41,7 +41,7 @@ class App {
         int umurTermuda = ambilAngkaTerkecil(kumpulanUmurMahasiswa);
         System.out.println("===================Mahasiwa Termuda=======================");
         for (int i = 0; i < mahasiswaKhairiyanArray.length; i++) {
-            if (ambilUmur(mahasiswaKhairiyanArray[i]) == umurTermuda) {
+            if (getAgeInt(mahasiswaKhairiyanArray[i]) == umurTermuda) {
                 System.out.println("Mahasiswa Termuda adalah : " + mahasiswaKhairiyanArray[i].getNama() + "\nUmur : "
                         + umurTermuda);
             }
@@ -74,7 +74,7 @@ class App {
                 + umurDalamBulanSetelahModulo + " Bulan";
     }
 
-    private static int ambilUmur(Mahasiswa parameterMahasiswa) {
+    private static int getAgeInt(Mahasiswa parameterMahasiswa) {
         YearMonth tahunDanBulanIni = YearMonth.now();
         int umurDalamTahun = 0;
         int tahunSaatIni = tahunDanBulanIni.getYear();
@@ -84,41 +84,33 @@ class App {
         return umurDalamTahun;
     }
 
-    public static int ambilAngkaTerkecil(int[] angkaInput) {
-        int tempAngkaPindah = 0;
+    private static int ambilAngkaTerkecil(int[] angkaInput) {
+        int hasil = angkaInput[0];
         int size = angkaInput.length;
 
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = 0; j < size - i - 1; j++) {
-                if (angkaInput[j] > angkaInput[j + 1]) {
-                    tempAngkaPindah = angkaInput[j];
-                    angkaInput[j] = angkaInput[j + 1];
-                    angkaInput[j + 1] = tempAngkaPindah;
-                }
+        for (int i = 0; i < size; i++) {
+            if(hasil > angkaInput[i]){
+                hasil = angkaInput[i];
             }
         }
-        int angkaTerkecil = angkaInput[0];
-        return angkaTerkecil;
+        
+        return hasil;
     }
 
-    public static int ambilAngkaTerbesar(int[] angkaInput) {
-        int tempAngkaPindah = 0;
+    private static int ambilAngkaTerbesar(int[] angkaInput) {
+        int hasil = 0;
         int size = angkaInput.length;
 
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = 0; j < size - i - 1; j++) {
-                if (angkaInput[j] < angkaInput[j + 1]) {
-                    tempAngkaPindah = angkaInput[j];
-                    angkaInput[j] = angkaInput[j + 1];
-                    angkaInput[j + 1] = tempAngkaPindah;
-                }
+        for (int i = 0; i < size; i++) {
+            if(hasil < angkaInput[i]){
+                hasil = angkaInput[i];
             }
         }
-        int angkaTerbesar = angkaInput[0];
-        return angkaTerbesar;
+        
+        return hasil;
     }
 
-    public static int[] urutkanBilangan(int[] angkaInput) {
+    private static int[] urutkanBilangan(int[] angkaInput) {
         int tempAngkaPindah = 0;
         int size = angkaInput.length;
         for (int i = 0; i < size - 1; i++) {

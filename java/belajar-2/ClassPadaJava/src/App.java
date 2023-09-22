@@ -20,8 +20,6 @@ class App {
             kumpulanUmurMahasiswa[i] = ambilUmur(mahasiswaKhairiyanArray[i]);
         }
 
-
-
         int arrayAngka[] = { 23, 5, 6, 12, 78, 9, 19 };
         System.out.println("=================AMBIL ANGKA================");
         System.out.println("Angka Terkecil : " + ambilAngkaTerkecil(arrayAngka));
@@ -39,7 +37,6 @@ class App {
         System.out.println();
         System.out.println("========================Umur Termuda======================");
         System.out.println("Umur termuda : " + ambilAngkaTerkecil(kumpulanUmurMahasiswa));
-
 
         int umurTermuda = ambilAngkaTerkecil(kumpulanUmurMahasiswa);
         System.out.println("===================Mahasiwa Termuda=======================");
